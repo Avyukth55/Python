@@ -1,0 +1,11 @@
+a=10
+b=20
+print("Values before swapping: ")
+print ("value of a: ", a)
+print ("value of b: ", b)
+print("Values after swapping: ")
+temp= a
+a=b
+b=temp
+print ("value of a: ", a)
+print ("value of b: ", b)
