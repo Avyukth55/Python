@@ -1,0 +1,15 @@
+a=10
+b=20
+c=30
+print("Values before swapping")
+print("The value of a is= ", a)
+print("The value of b is= ", b)
+print("The value of c is= ", c)
+temp=a
+a=b
+b=c
+c=temp
+print("Values after swapping")
+print("The value of a is= ", a)
+print("The value of b is= ", b)
+print("The value of c is= ", c)
