@@ -1,0 +1,15 @@
+print("Enter a number")
+inp=int(input())
+if inp<=1:
+    print(f"{inp} is not a prime number")
+elif inp>1:
+    isPrime=True
+    for i in range (2, inp):
+        if inp%i==0:
+            isPrime=False
+            break;
+        
+    if isPrime==False:
+        print(f"{inp} is not a Prime Number")
+    else:
+        print(f"{inp} is a Prime Number")
