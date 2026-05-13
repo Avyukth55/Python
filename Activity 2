@@ -1,0 +1,8 @@
+print("Enter a number")
+inp=int(input())
+temp=inp
+sum=0
+while(inp>0):
+    sum=sum+inp
+    inp=inp-1
+print(f"Sum of first {temp} natural numbers is", sum)
