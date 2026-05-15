@@ -1,0 +1,10 @@
+print("Enter total number of working days")
+work=int(input())
+print("Enter total number of days absent")
+absent=int(input())
+present=work-absent
+percent=(present/work)*100
+if percent<75:
+    print("You are not eligible")
+else:
+    print("You are eligible")
