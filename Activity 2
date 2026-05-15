@@ -1,8 +1,48 @@
-print("Enter a number")
-inp=int(input())
-temp=inp
-sum=0
-while(inp>0):
-    sum=sum+inp
-    inp=inp-1
-print(f"Sum of first {temp} natural numbers is", sum)
+def addition(num1, num2):
+    sum=num1+num2
+    print(f"Sum of {num1} and {num2} is ={sum}")
+def subtraction(num1, num2):
+    difference=num1-num2
+    print(f"Difference between {num1} and {num2} is ={difference}")
+def multiplication(num1, num2):
+    product=num1*num2
+    print(f"Product of {num1} and {num2} is ={product}")
+def quotient(num1, num2):
+    quotient=num1/num2
+    print(f"Quotient of {num1} / {num2} is ={quotient}")
+def remainder(num1, num2):
+    remainder=num1%num2
+    print(f"Remainder of {num1} / {num2} is ={remainder}")
+while True:
+    print("Enter math requirment")
+    print("Enter 1 for addition, 2 for subtraction, 3 for multiplication, 4 for quotient, 5 for remainder and 6 to exit")
+    inp=int(input())
+    if inp==1:
+        print("Enter two numbers")
+        num1=int(input())
+        num2=int(input())
+        addition(num1, num2)
+    if inp==2:
+        print("Enter two numbers")
+        num1=int(input())
+        num2=int(input())
+        subtraction(num1, num2)
+    if inp==3:
+        print("Enter two numbers")
+        num1=int(input())
+        num2=int(input())
+        multiplication(num1, num2)
+    if inp==4:
+        print("Enter two numbers")
+        num1=int(input())
+        num2=int(input())
+        quotient(num1, num2)
+    if inp==5:
+        print("Enter two numbers")
+        num1=int(input())
+        num2=int(input())
+        remainder(num1, num2)
+    if inp==6:
+        break;
+    if inp!=1 and inp!=2 and inp!=3 and inp!=4 and inp!=5 and inp!=6:
+        print("Invalid input")
