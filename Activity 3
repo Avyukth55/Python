@@ -1,7 +1,9 @@
-print("Enter number of rows")
+def factorial(inp):
+    if inp==0:
+        return 1
+    else:
+        return inp*factorial(inp-1)
+print("Enter a number")
 inp=int(input())
-for i in range(1, inp+1):
-    for j in range (i):
-        print("*", end="")
-    print()  
-      
+answer=factorial (inp)
+print(f"Factorial of {inp} is {answer}")
