@@ -1,6 +1,10 @@
-def myfunction(name, age, hobby):
-    print("My name is ", name)
-    print(f"I am {age} years old")
-    print("I love playing ", hobby)
-
-myfunction("Avyukth", 16, "Football")
+import turtle
+turtle.Screen()
+square=turtle.Turtle()
+num_sides=4
+sidelength=100
+angle=90.0
+for i in range(num_sides):
+    square.forward(sidelength)
+    square.left(angle)
+turtle.done()
