@@ -1,10 +1,30 @@
-import turtle
-turtle.Screen()
-square=turtle.Turtle()
-num_sides=4
-sidelength=100
-angle=90.0
-for i in range(num_sides):
-    square.forward(sidelength)
-    square.left(angle)
-turtle.done()
+print("Enter names of your favorite fruit")
+fruitlist=["Mango", "Apple", "Jackfruit", "Banana", "Orange"]
+print(fruitlist)
+length=len(fruitlist)
+firstelement=fruitlist[0]
+lastelement=fruitlist[-1]
+print(f"Length of the string is {length}, first element is {firstelement}, last element is {lastelement}")
+print("Enter the name of one more fruit")
+fruit6=str(input())
+fruitlist.append(fruit6)
+print(f"Updated list: {fruitlist} ")
+print("Enter fruit to be deleted")
+fruitdel=str(input())
+fruitlist.remove(fruitdel)
+print("Updated list= ", fruitlist)
+fruitlist.sort()
+print("Sorted list: ", fruitlist)
+print("Enter element to be deleted using index")
+index=int(input())
+fruitlist.pop(index)
+print("Updated list: ", fruitlist)
+fruitlist.reverse()
+print("List after reversal: ", fruitlist)
+print(fruitlist*2)
+print("Enter index to be sliced")
+indexslice=int(input())
+fruitlist[:indexslice]
+print("Sliced list: ", fruitlist)
+fruitlist.clear()
+print("Cleared list :", fruitlist)
