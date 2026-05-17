@@ -1,22 +1,14 @@
-import turtle
-star=turtle.Turtle()
-num_sides=3
-angle=120
-sidelength=100
-star.forward(sidelength)
-star.right(angle)
-star.forward(sidelength)
-star.right(angle)
-star.forward(sidelength)
-star.right(angle)
-star.forward(35)
-star.left(60)
-star.forward(30)
-star.right(120)
-star.forward(sidelength)
-star.right(angle)
-star.forward(sidelength)
-star.right(angle)
-star.forward(sidelength)
-star.right(angle)
-turtle.done()
+dict={'Name':'Avyukth', 'Age':15, 'Class':'Twelfth'}
+print("Original dictionary: ", dict)
+dict['Age']=16
+dict['Gender']="Male"
+print("Updated Dictionary: ",dict)
+length=len(dict)
+print("Length: ",length)
+print("Enter index to be popped")
+index=str(input())
+dict.pop(index)
+print("Updated dictionary: ",dict)
+print("Enter key to be returned")
+key=str(input())
+print(dict.get(key))
