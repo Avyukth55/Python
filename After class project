@@ -1,14 +1,16 @@
-print("Enter a number")
-inp = int(input())
-tempvar = inp
-count = len(str(inp))
-sum = 0
-temp = inp
-while temp > 0:
-    digit = temp % 10         
-    sum += digit ** count      
-    temp = temp // 10          
-if sum == tempvar:
-    print("Armstrong number")
-else:
-    print("Not an Armstrong number")
+def fiboseries(inp):
+    a=0
+    b=1
+    print(a)
+    if(inp>1):
+     print(b)
+    sum=0
+    for i in range (0, inp-2):
+      sum=a+b  
+      print(sum)
+      a=b
+      b=sum
+
+print("Enter number of elements of series required")
+inp=int(input())
+fiboseries(inp)
