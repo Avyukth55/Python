@@ -1,15 +1,14 @@
-a=10
-b=20
-c=30
-print("Values before swapping")
-print("The value of a is= ", a)
-print("The value of b is= ", b)
-print("The value of c is= ", c)
-temp=a
-a=b
-b=c
-c=temp
-print("Values after swapping")
-print("The value of a is= ", a)
-print("The value of b is= ", b)
-print("The value of c is= ", c)
+print("Enter a number")
+inp = int(input())
+tempvar = inp
+count = len(str(inp))
+sum = 0
+temp = inp
+while temp > 0:
+    digit = temp % 10         
+    sum += digit ** count      
+    temp = temp // 10          
+if sum == tempvar:
+    print("Armstrong number")
+else:
+    print("Not an Armstrong number")
