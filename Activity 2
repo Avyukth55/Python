@@ -1,14 +1,10 @@
-dict={'Name':'Avyukth', 'Age':15, 'Class':'Twelfth'}
-print("Original dictionary: ", dict)
-dict['Age']=16
-dict['Gender']="Male"
-print("Updated Dictionary: ",dict)
-length=len(dict)
-print("Length: ",length)
-print("Enter index to be popped")
-index=str(input())
-dict.pop(index)
-print("Updated dictionary: ",dict)
-print("Enter key to be returned")
-key=str(input())
-print(dict.get(key))
+myset1={1, 2, 3, 4, 5, 6}
+myset2={5, 6, 7, 8, 9, 10}
+print(f"Set 1: {myset1}")
+print(f"Set 2: {myset2}")
+myset1.add(7)
+print(f"Updated set 1: {myset1}")
+mysetunion=myset1.union(myset2)
+mysetintersection=myset1.intersection(myset2)
+print(f"Union: {mysetunion}")
+print(f"Intersection: {mysetintersection}")
