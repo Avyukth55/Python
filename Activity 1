@@ -1,15 +1,4 @@
-tuple1=()
-tuple2=(1, 2, 3, 4)
-tuple3=("Hello", 'H', 1)
-nestedtuple=(1,2, ('a', 'b'), [4, 5, 'nesting'])
-print("First element of second tuple: ", tuple2[0])
-print("Last element of second tuple: ", tuple2[3])
-print("First element of third tuple: ", tuple3[0])
-print("Last element of third tuple: ", tuple3[2])
-print("First element of nested tuple: ", nestedtuple[0])
-print("Last element of nested tuple: ", nestedtuple[3])
-print(f"First two elements of second tuple: {tuple2[0:2]}")
-print(f"Last two elements of second tuple: {tuple2[2:4]}")
-for i in range(0, 4):
-    print(f"Element number {i+1}:")
-    print(tuple2[i])
+class Student:
+    grade= 98
+    print("Hello, welcome to the class! Your grade is:", grade )
+obj=Student()
