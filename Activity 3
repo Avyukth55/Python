@@ -1,0 +1,9 @@
+class Parrot:
+    species="psittacoidea"
+    def __init__(self, name, age):
+        print("Name is:", name)
+        print("Age is: ", age)
+    def nomenclature(self):
+        print("Species: ", self.species)
+obj=Parrot("Poly", 3)
+obj.nomenclature()
