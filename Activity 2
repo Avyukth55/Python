@@ -1,10 +1,10 @@
-myset1={1, 2, 3, 4, 5, 6}
-myset2={5, 6, 7, 8, 9, 10}
-print(f"Set 1: {myset1}")
-print(f"Set 2: {myset2}")
-myset1.add(7)
-print(f"Updated set 1: {myset1}")
-mysetunion=myset1.union(myset2)
-mysetintersection=myset1.intersection(myset2)
-print(f"Union: {mysetunion}")
-print(f"Intersection: {mysetintersection}")
+class Student:
+    grade=98
+    name="Avyukth"
+    def sentence (self):
+        print("Welcome to our class")
+    def var(self):
+        print(f"Name: {self.name}, Grade:{self.grade}")
+obj=Student()
+obj.sentence()
+obj.var()
