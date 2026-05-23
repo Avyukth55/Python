@@ -1,10 +1,22 @@
-class Student:
-    grade=98
-    name="Avyukth"
-    def sentence (self):
-        print("Welcome to our class")
-    def var(self):
-        print(f"Name: {self.name}, Grade:{self.grade}")
-obj=Student()
-obj.sentence()
-obj.var()
+class Person():
+    def __init__(self, fname, lname):
+        self.fname=fname
+        self.lname=lname
+    def display(self):
+        print(f"Full name: {self.fname} {self.lname}")
+class Student(Person):
+    def __init__(self, fname, lname, year):
+        self.fname=fname
+        self.lname=lname
+        self.year=year
+    def show(self):
+        super().display()
+        print(f"Graduation year: {self.year} ")
+print("Enter your first name")
+fname=str(input())
+print("Enter your last name")
+lname=str(input())
+print("Enter your graduation year")
+year=int(input())
+obj=Student(fname, lname, year)
+obj.show()
