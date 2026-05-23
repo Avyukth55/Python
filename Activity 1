@@ -1,4 +1,24 @@
-class Student:
-    grade= 98
-    print("Hello, welcome to the class! Your grade is:", grade )
-obj=Student()
+class Person():
+    def __init__(self, name, idnumber):
+        self.name=name
+        self.idnumber=idnumber
+    def display(self):
+        print(f"Name: {self.name}, ID number: {self.idnumber}")
+class Employee(Person):
+    def __init__(self, name, idnumber, salary, post):
+        self.name=name
+        self.idnumber=idnumber
+        self.salary=salary
+        self.post=post
+    def show(self):
+        super().display()
+print("Enter your name")
+name=str(input())
+print("Enter your ID number")
+idnumber=str(input())
+print("Enter your salary")
+salary=str(input())
+print("Enter your post")
+post=str(input())
+obj=Employee(name, idnumber, salary, post)
+obj.show()
