@@ -1,0 +1,26 @@
+from abc import ABC, abstractmethod
+class Area(ABC):
+    def move(self):
+        pass
+class Square(Area):
+    def move(self):
+        print("Enter length of side")
+        side=int(input())
+        area=side*side
+        print("Area: ",area)
+class Rectangle(Area):
+    def move(self):
+        print("Enter length")
+        length=int(input())
+        print("Enter breadth")
+        breadth=int(input())
+        area=length*breadth
+        print("Area: ", area)
+class Triangle(Area):
+    def move(self):
+        print("Enter base length")
+        base=int(input())
+        print("Enter height length")
+        height=int(input())
+        area=1/2*height*base
+        print("Area: ",area)
