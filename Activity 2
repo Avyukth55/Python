@@ -1,22 +1,9 @@
-class Person():
-    def __init__(self, fname, lname):
-        self.fname=fname
-        self.lname=lname
-    def display(self):
-        print(f"Full name: {self.fname} {self.lname}")
-class Student(Person):
-    def __init__(self, fname, lname, year):
-        self.fname=fname
-        self.lname=lname
-        self.year=year
-    def show(self):
-        super().display()
-        print(f"Graduation year: {self.year} ")
-print("Enter your first name")
-fname=str(input())
-print("Enter your last name")
-lname=str(input())
-print("Enter your graduation year")
-year=int(input())
-obj=Student(fname, lname, year)
-obj.show()
+file=open('Avyukth.txt', 'r')
+Counter=0
+content=file.read()
+CoList=content.split("\n")
+for i in CoList:
+    if i:
+        Counter+=1
+print("This is the number of lines in the file")
+print(Counter)
