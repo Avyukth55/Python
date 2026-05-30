@@ -1,9 +1,5 @@
+print("Enter how many characters are required")
+inp=int(input())
 file=open('Avyukth.txt', 'r')
-Counter=0
-content=file.read()
-CoList=content.split("\n")
-for i in CoList:
-    if i:
-        Counter+=1
-print("This is the number of lines in the file")
-print(Counter)
+print(file.read(inp))
+file.close()
