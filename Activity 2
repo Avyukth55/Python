@@ -1,5 +1,9 @@
-print("Enter how many characters are required")
-inp=int(input())
-file=open('Avyukth.txt', 'r')
-print(file.read(inp))
-file.close()
+from tkinter import *
+from tkinter import messagebox
+root= Tk()
+root.geometry("200x200")
+def msg():
+    messagebox.showwarning("Alert", "Stop! Virus found.")
+button= Button(root, text="Scan for virus", command=msg)
+button.place(x=50, y=80)
+root.mainloop()
