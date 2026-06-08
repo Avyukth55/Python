@@ -1,26 +1,10 @@
-from abc import ABC, abstractmethod
-class Area(ABC):
-    def move(self):
-        pass
-class Square(Area):
-    def move(self):
-        print("Enter length of side")
-        side=int(input())
-        area=side*side
-        print("Area: ",area)
-class Rectangle(Area):
-    def move(self):
-        print("Enter length")
-        length=int(input())
-        print("Enter breadth")
-        breadth=int(input())
-        area=length*breadth
-        print("Area: ", area)
-class Triangle(Area):
-    def move(self):
-        print("Enter base length")
-        base=int(input())
-        print("Enter height length")
-        height=int(input())
-        area=1/2*height*base
-        print("Area: ",area)
+import webbrowser
+print("Hello, I am AIvyukth. What's your name?")
+name=input().strip()
+print(f"Wonderful name. Glad to meet you, {name}")
+print("Which browser do you want to open? (Google/Youtube/Wikepedia)")
+site=input().strip().lower()
+url=f"https://www.{site}.com"
+print(f"Opening {url} now...")
+webbrowser.open(url)
+print(f"It was nice talking to you, {name}. Have a good day!")
