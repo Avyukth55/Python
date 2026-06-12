@@ -1,59 +1,76 @@
-from tkinter import *
-from tkinter import messagebox
-root=Tk()
-root.title('Denomination Counter')
-root.configure(bg='light blue')
-root.geometry('650x400')
-label1=Label(root, text="Hello there, welcome to the denomination counter application", bg='light blue')
-label1.place(relx=0.5, y=340, anchor=CENTER)
-def msg():
-    MsgBox=messagebox.showinfo("Alert", "Do you want to calculate the denomination count?")
-    if MsgBox=='ok':
-        topwin()
-button1=Button(root, text= "Let's get started", command=msg, bg='brown', fg='white')
-button1.place(x=260, y=360)
-def topwin():
-    top=Toplevel()
-    top.title("Denomination counter")
-    top.configure(bg='Light grey')
-    top.geometry('600x350+50+50')
-    label=Label(top, text="Enter total amount", bg='light grey')
-    entry=Entry(top)
-    lbl=Label(top, text="Here are number of notes for each denomination", bg="light grey")
-    l1=Label(top, text="2000", bg='light grey')
-    l2=Label(top, text="500", bg='light grey')
-    l3=Label(top, text="100", bg='light grey')
-    t1=Entry(top)
-    t2=Entry(top)
-    t3=Entry(top)
+import re, random
+destinations = {
+    "beaches": ["Bali", "Maldives", "Phuket"],
+    "mountains": ["Swiss Alps", "Rocky Mountains", "Himalayas"],
+    "cities": ["Tokyo", "Paris", "New York"]
+}
 
-    def calculator():
-        try:
-            global amount
-            amount=int(entry.get())
-            note2000=amount // 2000
-            amount%=2000
-            note500= amount // 500
-            amount%=500
-            note100= amount//100
-            t1.delete(0, END)
-            t2.delete(0, END)
-            t3.delete(0, END)
-            t1.insert(END, str(note2000))
-            t2.insert(END, str(note500))
-            t3.insert(END, str(note100))
-        except ValueError:
-            messagebox.showerror("Error", "Please enter a valid number")
-    btn=Button(top, text='Calculate', command=calculator, bg='brown', fg='white')
-    label.place(x=230, y=50)
-    entry.place(x=200, y=80)
-    btn.place(x=240, y=150)
-    lbl.place(x=140, y=120)
-    l1.place(x=180, y=200)
-    l2.place(x=180, y=230)
-    l3.place(x=180, y=260)
-    t1.place(x=270, y=200)
-    t2.place(x=270, y=230)
-    t3.place(x=270, y=260)
-    top.mainloop()
-root.mainloop()
+jokes = [
+    "Why don't programmers like nature? Too many bugs!",
+    "Why did the computer go to the doctor? Because it had a virus!",
+    "Why do travelers always feel warm? Because of all their hot spots!"
+]
+def normalize_input(text):
+    return re.sub(r'\s+', " ", text.strip().lower())
+
+def recommend():
+    print("TravelBot: Beaches, mountains, or cities?")
+    preference = input("You: ")
+    preference = normalize_input(preference)
+    if preference in destinations:
+        suggestion=random.choice(destinations[preference])
+        print(f"TravelBot: How about {suggestion}?")
+        print("TravelBot: Do you like it? (yes/no)")
+        answer = input("You: ").lower()
+        if answer == "yes":
+            print(f"TravelBot: Awesome! Enjoy {suggestion}!")
+        elif answer == "no":
+            print("TravelBot: Let's try another.")
+            recommend()
+        else:
+         print("TravelBot: I'll suggest again.")
+         recommend()
+    else:
+        print("TravelBot: Sorry, I don't have that type of destination.")
+        recommend()
+def packing_tips():
+    print("TravelBot: Where to?")
+    location = normalize_input(input("You: "))
+    print("TravelBot: How many days?")
+    days=input("You: ")
+    print(f"TravelBot: Packing tips for {days} days in {location}:")
+    print("- Pack versatile clothes.")
+    print("- Bring chargers/adapters.")
+    print("- Check the weather forecast.")
+
+def tell_joke():
+    print(f"TravelBot: {random.choice(jokes)}")
+
+def show_help():
+    print("\nI can:")
+    print("- Suggest travel spots (say 'recommendation')")
+    print("- Offer packing tips (say 'packing')")
+    print("Tell a joke (say 'joke')")
+    print("Type 'exit' to end.")
+def chat():
+   print("Hello, I am TravelBot")
+   name=input("Your name?")
+   print(f"Nice to meet you, {name}")
+   show_help()
+   while True:
+      user_input=input(f"{name}")
+      if "recommend" in user_input:
+         recommend()
+      elif "packing" in user_input:
+         packing_tips() 
+      elif "joke" in user_input:
+         tell_joke()
+      elif "help" in user_input:
+         show_help()
+      elif "exit" in user_input:
+         print("TravelBot: Safe travels, Goodbye!")
+         break
+      else:
+         print("Could you rephrase?")
+if __name__=="__main__":
+   chat()
