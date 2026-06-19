@@ -1,62 +1,8 @@
-import random
-
-def show(board):
-    print(f"\n{board[0]} | {board[1]} | {board[2]}")
-    print("---+---+---")
-    print(f"{board[3]} | {board[4]} | {board[5]}")
-    print("---+---+---")
-    print(f"{board[6]} | {board[7]} | {board[8]}\n")
-
-def win(b, s):
-    wins = [(0,1,2),(3,4,5),(6,7,8),
-            (0,3,6),(1,4,7),(2,5,8),
-            (0,4,8),(2,4,6)]
-    return any(b[a] == b[c] == b[d] == s for a, c, d in wins)
-
-def full(board):
-    return all(not x.isdigit() for x in board)
-
-def move(board, symbol):
-    while True:
-        try:
-            n = int(input("Enter move (1-9): ")) - 1
-            if 0 <= n < 9 and board[n].isdigit():
-                board[n] = symbol
-                break
-        except:
-            pass
-        print("Invalid move!")
-
-def ai(board, ai_s, pl_s):
-    for s in [ai_s, pl_s]:
-        for i in range(9):
-            if board[i].isdigit():
-                temp = board[:]
-                temp[i] = s
-                if win(temp, s):
-                    board[i] = ai_s
-                    return
-    board[random.choice([i for i in range(9) if board[i].isdigit()])] = ai_s
-
-board = [str(i) for i in range(1, 10)]
-player = input("Choose X or O: ").upper()
-ai_s = "O" if player == "X" else "X"
-
-while True:
-    show(board)
-    move(board, player)
-    if win(board, player):
-        show(board)
-        print("You win!")
-        break
-    if full(board):
-        print("It's a tie!")
-        break
-    ai(board, ai_s, player)
-    if win(board, ai_s):
-        show(board)
-        print("AI wins!")
-        break
-    if full(board):
-        print("It's a tie")
-        break
+import cv2
+image = cv2.imread('Avyukth.jpg')
+cv2.namedWindow('Loaded Image', cv2.WINDOW_NORMAL)
+cv2.resizeWindow('Loaded Image',800 ,500 )
+cv2.imshow('Loaded Image', image)
+cv2.waitKey(0)  
+cv2.destroyAllWindows() 
+print(f"Image Dimensions: {image.shape}")  
