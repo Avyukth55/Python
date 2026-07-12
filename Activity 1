@@ -1,16 +1,27 @@
-import cv2
-import matplotlib.pyplot as plt
-image = cv2.imread('Avyukth.jpg')
-image_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-plt.imshow(image_rgb)
-plt.title("RGB Image")
-plt.show()
-gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-plt.imshow(gray_image, cmap='gray')
-plt.title("Grayscale Image")
-plt.show()
-cropped_image = image[100:300, 200:400]
-cropped_rgb = cv2.cvtColor(cropped_image, cv2.COLOR_BGR2RGB)
-plt.imshow(cropped_rgb)
-plt.title("Cropped Region")
-plt.show()
+import requests
+url="https://opentdb.com/api.php?amount=5&type=multiple"
+response=requests.get(url)
+if response.status_code==200:
+    trivia_data=response.json()
+    score=0
+    print("Welcome to the game")
+    print("Answer the following questions")
+    question_no=0
+    for question_data in trivia_data["results"]:
+        question_no+=1
+        print(f"Question {question_no}: {question_data['question']}")
+        options=question_data["incorrect_answers"]+[question_data["correct_answer"]]
+        options=sorted(options)
+        option_no=1
+        for option in options:
+            print(f"{option_no}. {option}")
+            option_no+=1
+        user_answer=input("Your answer (1/2/3/4):")
+        if options[int(user_answer)-1]==question_data["correct_answer"]:
+            print("Correct!")
+            score+=1
+        else:
+            print(f"Incorrect answer! Correct answer = {question_data["correct_answer"]}")
+    print(score)
+else:
+    print("Could not fetch the data")
