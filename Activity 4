@@ -1,11 +1,14 @@
-class Parrot:
-    def __init__(self, name, age):
-        self.name=name
-        self.age=age
-    def sing(self, song):
-        return"{} sings {}".format(self.name, song)
-    def dance(self):
-        return"{} is now dancing".format(self.name)
-obj= Parrot ("Poly", 10)
-print(obj.sing("melodiously"))
-print(obj.dance())
+from google import genai 
+client = genai.Client(api_key="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") 
+text = input("Enter text to summarize:\n") 
+prompt = f"""
+Summarize the following text in a clear and concise paragraph. 
+Text:
+{text}
+""" 
+response = client.models.generate_content(
+    model="gemini-2.5-flash",
+    contents=prompt,
+) 
+print("\nSummary:")
+print(response.text)
