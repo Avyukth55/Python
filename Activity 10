@@ -1,0 +1,69 @@
+import threading
+import pyaudio
+import speech_recognition as sr
+from speech_recognition import AudioData
+import wave
+
+stop_event = threading.Event()
+
+def wait_for_enter():
+    input("\n🎤 Press Enter to stop recording...\n")
+    stop_event.set()
+
+def record_audio():
+    p = pyaudio.PyAudio()
+
+    stream = p.open(
+        format=pyaudio.paInt16,
+        channels=1,
+        rate=16000,
+        input=True,
+        frames_per_buffer=1024
+    )
+
+    frames = []
+
+    threading.Thread(
+        target=wait_for_enter,
+        daemon=True
+    ).start()
+
+    print("Recording... Speak now!")
+
+    while not stop_event.is_set():
+        frames.append(stream.read(1024))
+
+    stream.stop_stream()
+    stream.close()
+
+    width = p.get_sample_size(pyaudio.paInt16)
+    p.terminate()
+
+    audio_data = b"".join(frames)
+    return audio_data, 16000, width
+
+def save_audio(data, rate, width):
+    with wave.open("recording.wav", "wb") as wf:
+        wf.setnchannels(1)
+        wf.setsampwidth(width)
+        wf.setframerate(rate)
+        wf.writeframes(data)
+
+    print("Saved as recording.wav")
+
+def transcribe(data, rate, width):
+    recognizer = sr.Recognizer()
+    audio = AudioData(data, rate, width)
+
+    text = recognizer.recognize_google(audio)
+    print(" Transcription:", text)
+
+def main():
+    print("HELLO AI, CAN YOU HEAR ME?")
+
+    audio_data, rate, width = record_audio()
+    save_audio(audio_data, rate, width)
+    transcribe(audio_data, rate, width)
+
+if __name__ == "__main__":
+    main()
