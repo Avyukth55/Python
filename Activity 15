@@ -1,0 +1,36 @@
+import os
+from gtts import gTTS
+def speak(text):
+    print(text)
+    
+    tts = gTTS(text=text, lang="en")
+    tts.save("speech.mp3")
+    
+    os.system("speech.mp3")
+
+speak("Welcome to Python Quiz")
+score = 0
+
+speak("Question 1. What is the capital of India?")
+answer = input("Your answer: ")
+
+if answer.lower() == "delhi":
+    speak("Correct! Well done.")
+    score += 1
+else:
+    speak("Incorrect. The answer is Delhi.")
+
+speak("Question 2. What is 5 plus 3?")
+answer = input("Your answer: ")
+
+if answer == "8":
+    speak("Correct!")
+    score += 1
+else:
+    speak("Incorrect. The answer is 8.")
+
+speak(f"Your final score is {score} out of 2.")
+
+print("Type in a story")
+story = input("Your story: ")
+speak(story)
