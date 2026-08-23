@@ -1,0 +1,44 @@
+from groq import generate_response
+
+def main():
+    print("=== TEMPERATURE + PROMPT ENGINEERING ===")
+
+    # Temperature exploration
+    prompt = input("\nEnter a creative prompt: ")
+
+    for temp in [0.1, 0.5, 0.9]:
+        print(f"\n--- Temperature: {temp} ---")
+        print(
+            generate_response(
+                prompt, temperature=temp, max_tokens=300
+            )
+        )
+
+    # Instruction prompts
+    topic = input("\nEnter a topic: ")
+
+    prompts = [
+        f"Summarize {topic} in 3-4 sentences.",
+        f"Explain {topic} to a 10-year-old.",
+        f"Give pros and cons of {topic}.",
+        f"Write a fictional 2050 news headline about {topic}.",
+    ]
+
+    for i, p in enumerate(prompts, 1):
+        print(f"\n--- Prompt {i} ---")
+        print(
+            generate_response(p, temperature=0.7, max_tokens=300)
+        )
+
+    # Custom prompt
+    custom = input("\nEnter your own prompt: ")
+    print("\n--- Your Response ---")
+    print(
+        generate_response(
+            custom, temperature=0.7, max_tokens=300
+        )
+    )
+
+
+if __name__ == "__main__":
+    main()
