@@ -1,0 +1,57 @@
+from groq import generate_response
+
+def ask(prompt, temp=0.3):
+    return generate_response(prompt, temperature=temp, max_tokens=512)
+
+def run_activity():
+    category = input("Category: ").strip()
+    item = input(f"Item: ").strip()
+
+    if not category or not item:
+        print("Please enter both fields.")
+        return
+
+    prompts = {
+        "ZERO-SHOT": f"Is {item} a {category}? Answer yes or no.",
+
+        "ONE-SHOT": f"""Example:
+Category: fruit
+Item: apple
+Answer: Yes, apple is a fruit.
+
+Category: {category}
+Item: {item}
+Answer:""",
+
+        "FEW-SHOT": f"""Example 1:
+Category: fruit
+Item: apple
+Answer: Yes, apple is a fruit.
+
+Example 2:
+Category: animal
+Item: dog
+Answer: Yes, dog is an animal.
+
+Category: {category}
+Item: {item}
+Answer:""",
+
+        "CREATIVE": f"""Example:
+Word: moon
+Story: The moon shone brightly over the quiet city.
+
+Word: {item}
+Story:"""
+    }
+
+    for name, prompt in prompts.items():
+        print(f"\n--- {name} ---")
+        print(ask(prompt, 0.7 if name == "CREATIVE" else 0.3))
+
+    print("\n--- REFLECTION ---")
+    print("1. How did zero-shot, one-shot and few-shot differ?")
+    print("2. Which approach was most helpful?")
+    print("3. How did examples influence the output?")
+if __name__ == "__main__":
+    run_activity()
