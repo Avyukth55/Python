@@ -1,0 +1,52 @@
+import random
+
+left = 0
+right = 0
+
+print("=== REINFORCEMENT LEARNING ===")
+print("The AI must learn which path is better.\n")
+
+for i in range(20):
+
+    # Explore or use what it has learned
+    if random.random() < 0.3:
+        choice = random.choice(["left", "right"])  # explore
+    elif right > left:
+        choice = "right"  # use learning
+    else:
+        choice = "left"
+
+    # Environment gives reward
+    if choice == "right":
+        reward = 10
+        right += reward
+    else:
+        reward = -5
+        left += reward
+
+    print(f"Round {i + 1}: {choice} -> Reward: {reward}")
+
+print("\n=== WHAT DID THE AI LEARN? ===")
+print("Left score :", left)
+print("Right score:", right)
+
+if right > left:
+    print("\nAI learned: RIGHT is the better choice!")
+
+print("\n=== TESTING THE AI ===")
+
+right_choices = 0
+
+for i in range(10):
+
+    if right > left:
+        choice = "right"
+    else:
+        choice = "left"
+
+    if choice == "right":
+        right_choices += 1
+
+    print(f"Test {i + 1}: AI chooses {choice}")
+
+print(f"\nAI chose RIGHT {right_choices}/10 times.")
