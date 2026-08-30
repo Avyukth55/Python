@@ -1,0 +1,35 @@
+from ai_model import generate_response
+def bias_mitigation():
+    print("\n=== BIAS MITIGATION ===")
+
+    prompt = input("Enter a prompt: ")
+    print("\nInitial Response:")
+    print(generate_response(prompt))
+
+    neutral_prompt = input("\nEnter a more neutral prompt: ")
+    print("\nNeutral Response:")
+    print(generate_response(neutral_prompt))
+
+def token_limit():
+    print("\n=== TOKEN LIMIT ===")
+
+    prompt = input("Enter a prompt: ")
+
+    print("\nResponse with 10-token limit:")
+    print(generate_response(prompt, 30))
+
+    print("\nResponse with 30-token limit:")
+    print(generate_response(prompt, 100))
+
+print("\n=== AI LEARNING ACTIVITY ===")
+print("1. Bias Mitigation")
+print("2. Token Limits")
+
+choice = input("Choose: ")
+
+if choice == "1":
+    bias_mitigation()
+elif choice == "2":
+    token_limit()
+else:
+    print("Invalid choice.")
