@@ -1,0 +1,22 @@
+from groqai import generate_response
+import io
+print("AI teaching assistant")
+print("Ask me anything about various subjects, and I'll provide an insightful answer")
+history=[]
+while True:
+    question=input("Enter your question, or 'exit' to stop")
+    if question.lower()=="exit":
+        break
+    if question.strip():
+        answer=generate_response(question, temperature=0.3, max_tokens=1024)
+        history.append({
+            "question":question,
+            "answer":answer
+        })
+        print("AI response: ")
+        print(answer)
+        print("--------Conversation History--------")
+        for i, h in enumerate(history, 1):
+            print(f" Q. {i}: {h['question']}")
+            print(f" A. {i}: {h['answer']}")
+    
